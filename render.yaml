@@ -6,7 +6,7 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: WORDPRESS_DB_HOST
-        value: mysql
+        value: mariadb:3306
       - key: WORDPRESS_DB_NAME
         value: wordpress
       - key: WORDPRESS_DB_USER
@@ -16,17 +16,19 @@ services:
     ports:
       - 80
 
-  - type: private
-    name: mysql
+  - type: web
+    name: mariadb
     env: docker
     plan: free
-    dockerfilePath: ./mysql.Dockerfile
+    dockerfilePath: ./mariadb.Dockerfile
     envVars:
-      - key: MYSQL_DATABASE
+      - key: MARIADB_DATABASE
         value: wordpress
-      - key: MYSQL_USER
+      - key: MARIADB_USER
         value: wpuser
-      - key: MYSQL_PASSWORD
+      - key: MARIADB_PASSWORD
         value: wp_pass
-      - key: MYSQL_ROOT_PASSWORD
+      - key: MARIADB_ROOT_PASSWORD
         value: root_pass
+    ports:
+      - 3306
