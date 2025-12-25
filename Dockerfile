@@ -1,4 +1,3 @@
-
 # WordPress officiel avec Apache et PHP
 FROM wordpress:latest
 
