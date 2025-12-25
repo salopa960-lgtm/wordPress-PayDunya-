@@ -15,8 +15,12 @@ services:
         value: wp_pass
     ports:
       - 80
+    disk:
+      name: wordpress-uploads
+      mountPath: /var/www/html/wp-content/uploads
+      sizeGB: 5
 
-  - type: web
+  - type: private
     name: mariadb
     env: docker
     plan: free
@@ -32,3 +36,7 @@ services:
         value: root_pass
     ports:
       - 3306
+    disk:
+      name: mariadb-data
+      mountPath: /var/lib/mysql
+      sizeGB: 5
