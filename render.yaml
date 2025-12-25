@@ -16,7 +16,7 @@ services:
     ports:
       - 80
 
-  - type: web
+  - type: private
     name: mysql
     env: docker
     plan: free
@@ -30,5 +30,3 @@ services:
         value: wp_pass
       - key: MYSQL_ROOT_PASSWORD
         value: root_pass
-    ports:
-      - 3306
