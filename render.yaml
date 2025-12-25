@@ -3,7 +3,7 @@ services:
     name: wordpress
     env: docker
     plan: free
-    image: wordpress:latest
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: WORDPRESS_DB_HOST
         value: mariadb:3306
@@ -24,7 +24,7 @@ services:
     name: mariadb
     env: docker
     plan: free
-    image: mariadb:latest
+    dockerfilePath: ./mariadb.Dockerfile
     envVars:
       - key: MARIADB_DATABASE
         value: wordpress
