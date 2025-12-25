@@ -1,8 +1,34 @@
 services:
   - type: web
-    name: wordpress-paydunya
+    name: wordpress
     env: docker
     plan: free
     dockerfilePath: ./Dockerfile
+    envVars:
+      - key: WORDPRESS_DB_HOST
+        value: mysql
+      - key: WORDPRESS_DB_NAME
+        value: wordpress
+      - key: WORDPRESS_DB_USER
+        value: wpuser
+      - key: WORDPRESS_DB_PASSWORD
+        value: wp_pass
     ports:
       - 80
+
+  - type: web
+    name: mysql
+    env: docker
+    plan: free
+    dockerfilePath: ./mysql.Dockerfile
+    envVars:
+      - key: MYSQL_DATABASE
+        value: wordpress
+      - key: MYSQL_USER
+        value: wpuser
+      - key: MYSQL_PASSWORD
+        value: wp_pass
+      - key: MYSQL_ROOT_PASSWORD
+        value: root_pass
+    ports:
+      - 3306
